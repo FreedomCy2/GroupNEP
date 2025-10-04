@@ -3,6 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 use Livewire\Volt\Volt;
+use App\Http\Controllers\Admin\DashboardController;
+
+Route::resource('admin/dashboard', DashboardController::class)
+    ->only(['index'])
+    ->name('index', 'admin.dashboard');
 
 Route::get('/', function () {
     return view('welcome');
