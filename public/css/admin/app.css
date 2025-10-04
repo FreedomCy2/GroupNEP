@@ -1,0 +1,47 @@
+.dashboardCard {
+    width: 977px;
+    height: 625px;
+    flex-shrink: 0;
+    fill: rgba(217, 217, 217, 0.80);
+}
+
+.goBack-button {
+    display: flex;
+    width: 256px;
+    height: 38px;
+    justify-content: center;
+    align-items: center;
+    gap: 22.674px;
+    flex-shrink: 0;
+    /* For text */
+    color: #000;
+    font-family: Inter;
+    font-size: 27.058px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 38px;
+}
+
+.profileIcon {
+    display: flex;
+    width: 66px;
+    height: 66px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.dashboardSidebar {
+    background-color: #68D6EC80;
+    width: 191px;
+    height: 770px;
+    flex-shrink: 0;
+    /* For logo */
+    width: 130.575px;
+    height: 130.575px;
+    transform: rotate(-0.114deg);
+    flex-shrink: 0;
+    aspect-ratio: 130.57/130.57;
+    /* For text (links) */
+    
+}

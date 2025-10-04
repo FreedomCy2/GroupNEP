@@ -1,14 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Home Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>@yield('title','Clinic Flow Administrator')</title>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="{{ asset('css/admin/app.css') }}">
+
+    <!-- Page-specific CSS (optional) -->
+    @stack('styles')
 </head>
+
 <body>
-    <div class="admin-dashboard">
-        <h1>Welcome to the Admin Dashboard</h1>
-        <p>This is the home page for admin users.</p>
-    </div>
+    <h1>Admin</h1>
+    
+    <aside class="sidebar-admin">
+        <nav>
+            <ul>
+                <li><a href="{{ route('admin.dashboard.index') }}">Dashboard</a></li>
+                <li><a href="#">Users</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Custom Scripts -->
+    <script src="{{ asset('js/admin/app.js') }}" defer></script>
+
+    <!-- Page-specific JS (optional) -->
+    @stack('scripts')
 </body>
 </html>
