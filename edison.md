@@ -21,28 +21,42 @@
 - Layout file for all pages (excluding login).
 - Stored under `resources/views/layouts`.
 - Contains sidebar and stuff applied to all pages.
-- Comment: Imagine if u had to repeat the sidebar code on every page. Payah kan? So use layouts.
+- Comment: Imagine if u had to repeat the sidebar code on every page. Payah kan? So use template.
 
 ## Summary
 
 **Example** >> *Name of feature* - *Admin/User* - *Explanation*
 
-**Home page - Admin** 
-- This is first page admin sees after login.
-- Sidebar has links to other pages.
-- CSS and layouts are found in `dashboard.blade.php`.
-- The HTML is handled by the `admin.home` view.
+**admin.blade.php - resources/layouts**
+- Layout for all admin pages (excluding login).
+- Figma design can be found under "Dashboard + Sidebar".
+- Apply this to all views (pages) by using `@extends('layouts.admin')` in respective `blade.php` files.
 
-**CSS: Sidebar - Admin**
+**Dashboard page - Admin** 
+- This is first page admin sees after login.
+- Layout is found under `resources/layouts/admin.blade.php`.
+- Figma design can be found under "Dashboard".
+
+**CSS: Sidebar - Admin (DISCONTINUED)**
 - Sidebar is static for now.
 - Links are not functional yet.
 - CSS is in `app.css` under `public/css/admin`.
 - The card design is 'flexbox' because 'grid' too overpowered for this.
 
-**CSS: Container - Admin**
+**CSS: Container - Admin (DISCONTINUED)**
 - Container is where the main content goes and is called as a Blade layout to avoid code repetition on all page views.
 - Think of it as a dashboard area - example: a grey box containing the "cards" including overviews, stats, etc.
 - CSS is in `app.css` under `public/css/admin`.
+
+**Naming files for resources/view**
+resources/layouts
+L_____ admin.blade.php - for admin page layout
+L_____ user.blade.php - for user page layout
+
+resources/views/admin
+L_____ auth.blade.php
+L_____ dashboard.blade.php
+L_____ booking.blade.php
 
 ## Terms
 @ - At / Arah
