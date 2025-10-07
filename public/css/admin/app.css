@@ -1,47 +1,48 @@
-.dashboardCard {
-    width: 977px;
-    height: 625px;
-    flex-shrink: 0;
-    fill: rgba(217, 217, 217, 0.80);
-}
-
-.goBack-button {
-    display: flex;
-    width: 256px;
-    height: 38px;
-    justify-content: center;
-    align-items: center;
-    gap: 22.674px;
-    flex-shrink: 0;
-    /* For text */
-    color: #000;
-    font-family: Inter;
-    font-size: 27.058px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 38px;
-}
-
-.profileIcon {
-    display: flex;
-    width: 66px;
-    height: 66px;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-}
-
-.dashboardSidebar {
-    background-color: #68D6EC80;
+.Sidebar {
     width: 191px;
-    height: 770px;
+    min-height: 100vh;
+    background: rgba(104, 214, 236, 0.50);
+    /* Remove position: absolute; */
     flex-shrink: 0;
-    /* For logo */
-    width: 130.575px;
-    height: 130.575px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Rectangle1 {
+    width: 100%;
+    height: 100%;
+    /* Remove position: absolute; */
+    background: rgba(217, 217, 217, 0.80);
+    border-radius: 40px;
+}
+
+.SidebarMenu {
+    margin-top: 42px;
+    display: flex;
+    flex-direction: column;
+    gap: 42px;
+    color: #000;
+    text-align: center;
+    font-family: sans-serif; /* TODO: Replace with actual font family */
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.Sidebar-Logo {
+    width: 183.661px;
+    height: 183.661px;
     transform: rotate(-0.114deg);
     flex-shrink: 0;
-    aspect-ratio: 130.57/130.57;
-    /* For text (links) */
-    
+    aspect-ratio: 183.66/183.66;
+}
+
+.dashboard {
+    margin-left: 0;         /* No extra margin needed if using flex layout */
+    padding: 32px 24px;     /* Add padding inside the dashboard area */
+    background: #fff;       /* Optional: white background for clarity */
+    border-radius: 16px;    /* Optional: rounded corners */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04); /* Optional: subtle shadow */
 }
