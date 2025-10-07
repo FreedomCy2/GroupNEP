@@ -8,30 +8,39 @@
 
     <!-- Custom Styles -->
     <link rel="stylesheet" href="{{ asset('css/admin/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/admin/sidebar.css') }}">
 
     @stack('styles')
 </head>
 <body>
-    <div class="flex">
+    <div class="layout-flex">
         <!-- Sidebar -->
-        <aside data-layer="Sidebar" class="Sidebar">
-            <div data-layer="Rectangle 1" class="Rectangle1"></div>
+        <aside class="Sidebar">
             <img class="Sidebar-Logo" src="{{ asset('images/Clinic-Flow-logo.png') }}" />
-            <div data-layer="SidebarMenu" class="SidebarMenu">
-                <div data-layer="Bookings" class="Bookings">Bookings</div>
-                <div data-layer="Dashboard" class="Dashboard">Dashboard</div>
-                <div data-layer="Doctors" class="Doctors">Doctors</div>
-                <div data-layer="Schedule" class="Schedule">Schedule</div>
-                <div data-layer="Manage Users" class="ManageUsers">Manage Users</div>
-                <div data-layer="Reminders" class="Reminders">Reminders</div>
-                <div data-layer="Records" class="Records">Records</div>
+            
+            <div class="SidebarMenu">
+                <div class="SidebarMenuItem">Bookings</div>
+                <div class="SidebarMenuItem">Dashboard</div>
+                <div class="SidebarMenuItem">Doctors</div>
+                <div class="SidebarMenuItem">Schedule</div>
+                <div class="SidebarMenuItem">Manage Users</div>
+                <div class="SidebarMenuItem">Reminders</div>
+                <div class="SidebarMenuItem">Records</div>
             </div>
-            <div data-layer="Copyright © 2025 Clinic Flow" class="Copyright2025ClinicFlow w-48 h-5 text-center justify-start text-black text-xs font-normal font-['Inter']">Copyright © 2025 Clinic Flow</div>
+            
+            <footer class="CopyrightNotice_Sidebar">Copyright © 2025 Clinic Flow</footer>
         </aside>
+
         <!-- Main Content Area -->
-        <main class="flex-1 p-8">
-            @yield('content')
+        <main class="MainContent">
+            <header class="MainHeader">
+                <h1 class="MainTitle">@yield('title', 'Admin')</h1>
+            </header>
+           
+            <section class="DashboardCard">
+                <h2 class="DashboardCardTitle">Dashboard Overview</h2>
+                <p class="DashboardCardDesc">This is the admin dashboard where you can manage the system.</p>
+                @yield('content')
+            </section>
         </main>
     </div>
 

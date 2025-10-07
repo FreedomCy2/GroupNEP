@@ -2,10 +2,8 @@
 
 @extends('layouts.admin')
 
-@section('title', 'Dashboard')
+@section('title', 'Go Back to Dashboard')
 
 @section('content')
-<div class="dashboard">
-    <h2>Welcome back, Admin!</h2>
-</div>
+    <p>Welcome to the Admin Dashboard!</p>
 @endsection

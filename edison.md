@@ -61,3 +61,18 @@ L_____ booking.blade.php
 ## Terms
 @ - At / Arah
 w/ - With
+"Inline" - example is `<main class="flex-1 main-content-area">`. Try to avoid this psl payahkan maintain and reading.
+
+## Notes in CSS
+
+`min-height: 100vh;` content takes up full height of viewport
+
+`display: flex;` flexbox layout for arranging items in a row or column 
+-> combined with `flex-direction: column;` for vertical stacking OR
+-> `flex-direction: row;` for horizontal alignment
+
+`<div class="flex"></div>` - this "parent" contains "children"
+`<aside>...</aside>` - child flexbox; left side
+`<main>...</main>` - child flexbox; right side
+
+`width: 16rem;` - fixed width for sidebar
