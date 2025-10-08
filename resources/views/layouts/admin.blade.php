@@ -33,12 +33,20 @@
         <!-- Main Content Area -->
         <main class="MainContent">
             <header class="MainHeader">
-                <h1 class="MainTitle">@yield('title', 'Admin')</h1>
+                <!-- Page Title is called via layout @extend('admin') -->
+                <div class="MainHeaderTitleGroup">
+                    <img class="PageLogoNav" src="@yield('PageLogoNav')" alt="Page Logo Nav">
+                    <h1 class="MainTitle">@yield('title', 'Admin')</h1>
+                </div>
+                
+                <!-- User Avatar -->
+                <!-- TODO: Make this dynamic later -->
+                <nav class="UserAvatar">
+                    <img class="Undefined_UserAvatar" src="{{ asset('images/unnamed_user_pfp.png') }}" alt="Unnamed User Avatar" />
+                </nav>
             </header>
-           
+
             <section class="DashboardCard">
-                <h2 class="DashboardCardTitle">Dashboard Overview</h2>
-                <p class="DashboardCardDesc">This is the admin dashboard where you can manage the system.</p>
                 @yield('content')
             </section>
         </main>
