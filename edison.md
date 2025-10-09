@@ -1,4 +1,6 @@
-# "Edison as contributor" 
+Edison as contributor 
+
+# Dashboard, Admin - Branch `admin-dashboard`
 
 ## TODO 04.10.25
 - [x] Create "Home" views for Admin 
@@ -7,19 +9,6 @@
 - [ ] Add dynamic data via `.js` to "Home" page
 - [X] Extend layout in `dashboard.blade.php`
 - [X] Create css spreadsheet for `home.blade.php`
-
-## Log / Update
-`home.blade.php`
-- AKA "Dashboard".
-- stored under `resources/views/admin`.
-- This first page ppl sees after login.
-- Found @ Figma, "Admin" w/ name "Dashboard".
-
-`admin.blade.php`
-- Layout file for all pages (excluding login).
-- Stored under `resources/views/layouts`.
-- Contains sidebar and stuff applied to all pages.
-- Comment: Imagine if u had to repeat the sidebar code on every page. Payah kan? So use template.
 
 ## Summary
 
@@ -71,36 +60,69 @@ L_____ booking.blade.php
     `ItemValue`
     `ItemChange_Positive`
 
-## Blog
--> Now using BEM naming for CSS classes to avoid long naming (e.g. `Dashboard-Card_Item-Group`),
--- Keeps names short and simple BUT not too short.
+# Authentication, Admin - Branch `admin-auth`
 
--> Discontinued using previous naming convention of underscores `_` and hyphens `-` psl panjang and payah,
--- BEM follows format `Block__Element--Modifier` e.g. (Dashboard-Card--Bookings).
+## TODO 09.10.25
+- [ ] Create "Login", "Register", "Forgot Password" views for Admin.
+- [ ] Create functions in AuthController.
+- [ ] Drop user to `/admin/dashboard` after login.
+- [ ] Create custom CSS for Admin Auth pages (not using Blade template). 
+- [ ] Add dynamic data via `.js` to "Home" page.
+- [ ] Update Notes section at the bottom (ku sdkit malas -_-)
 
--> Occassionally using nested BEM for better reading and maintainability for larger code,
--- Warning: Do **NOT** use it casually. Keep it simple and only in long nested HTML elements!
 
-## Terms
-@ - At / Arah
-w/ - With
-"Inline" - example is `<main class="flex-1 main-content-area">`. Try to avoid this psl payahkan maintain and reading.
 
-## Notes in Coding
 
+# Blog
+- Now using BEM naming for CSS classes to avoid long naming (e.g. `Dashboard-Card_Item-Group`),
+- Keeps names short and simple BUT not too short.
+
+- Discontinued using previous naming convention of underscores `_` and hyphens `-` psl panjang and payah,
+- BEM follows format `Block__Element-Modifier` e.g. (Dashboard-Card-Bookings).
+
+- Occassionally using nested BEM for better reading and maintainability for larger code,
+- Warning: Do **NOT** use it casually. Keep it simple and only in long nested HTML elements!
+
+## Log / Update
+`home.blade.php`
+- AKA "Dashboard".
+- stored under `resources/views/admin`.
+- This first page ppl sees after login.
+- Found @ Figma, "Admin" w/ name "Dashboard".
+
+`admin.blade.php`
+- Layout file for all pages (excluding login).
+- Stored under `resources/views/layouts`.
+- Contains sidebar and stuff applied to all pages.
+- Comment: Imagine if u had to repeat the sidebar code on every page. Payah kan? So use template.
+
+# Notes for Programming Newbie ;)
+
+(Minimum Height Viewport)
 `min-height: 100vh;` content takes up full height of viewport
 
-`display: flex;` flexbox layout for arranging items in a row or column 
--> combined with `flex-direction: column;` for vertical stacking OR
--> `flex-direction: row;` for horizontal alignment
+(Flexbox CSS for laying out items)
+`display: flex;` — activates the container so that its "children" can be arranged in a row or column,  
+`flex-direction: row;` — arranges children horizontally,  
+`flex-direction: column;` — arranges children vertically.
 
-`<div class="flex"></div>` - this "parent" contains "children"
-`<aside>...</aside>` - child flexbox; left side
-`<main>...</main>` - child flexbox; right side
+(Flexbox Parent and Children in HTML)
+`<div class="flex"></div>` - this "parent" contains "children",  
+`<aside>...</aside>` - child flexbox; left side,  
+`<main>...</main>` - child flexbox; right side.
 
-`width: 16rem;` - fixed width for sidebar
+(Width CSS)
+`width: 16rem;` - fixed width for sidebar.
 
-`justify-content: space-between;` - put space in between items INside this flexbox like justify for text
+(Justify Content CSS)
+`justify-content: space-between;` - put space in between items dlm flexbox; mcm justify-alignment for text docs.
 
-`<img class="Undefined_UserAvatar" src="{{ asset('images/unnamed_user_pfp.png') }}" alt="Unnamed User Avatar" />`
--> you can use the `@yield()` function to call images different for each certain pagees. 
+(Images in HTML)
+`<img class="Undefined_UserAvatar" src="{{ asset('images/unnamed_user_pfp.png') }}" alt="Unnamed User Avatar" />`.
+- Call image from custom-added folder named `images`inside `public` folder.  
+- Note: jgn buatkan `images` folder dlm `/resources` folder. Laravel indh guna!
+
+(Image w/ Blade template)
+- you can use the `@yield()` func in the view file instead of using file path.
+- ani pakai klau kau different images for different pagees.
+- Example: `<img src="@yield('profile_image')" alt="Profile Image" />`.
