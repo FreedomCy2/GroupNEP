@@ -1,156 +1,133 @@
-<?php
-
-use App\Models\User;
-use Illuminate\Auth\Events\Lockout;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\RateLimiter;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Str;
-use Illuminate\Validation\ValidationException;
-use Laravel\Fortify\Features;
-use Livewire\Attributes\Layout;
-use Livewire\Attributes\Validate;
-use Livewire\Volt\Component;
-
-new #[Layout('components.layouts.auth')] class extends Component {
-    #[Validate('required|string|email')]
-    public string $email = '';
-
-    #[Validate('required|string')]
-    public string $password = '';
-
-    public bool $remember = false;
-
-    /**
-     * Handle an incoming authentication request.
-     */
-    public function login(): void
-    {
-        $this->validate();
-
-        $this->ensureIsNotRateLimited();
-
-        $user = $this->validateCredentials();
-
-        if (Features::canManageTwoFactorAuthentication() && $user->hasEnabledTwoFactorAuthentication()) {
-            Session::put([
-                'login.id' => $user->getKey(),
-                'login.remember' => $this->remember,
-            ]);
-
-            $this->redirect(route('two-factor.login'), navigate: true);
-
-            return;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Clinic Login</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
         }
-
-        Auth::login($user, $this->remember);
-
-        RateLimiter::clear($this->throttleKey());
-        Session::regenerate();
-
-        $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
-    }
-
-    /**
-     * Validate the user's credentials.
-     */
-    protected function validateCredentials(): User
-    {
-        $user = Auth::getProvider()->retrieveByCredentials(['email' => $this->email, 'password' => $this->password]);
-
-        if (! $user || ! Auth::getProvider()->validateCredentials($user, ['password' => $this->password])) {
-            RateLimiter::hit($this->throttleKey());
-
-            throw ValidationException::withMessages([
-                'email' => __('auth.failed'),
-            ]);
+        .bg-clinic {
+            background: linear-gradient(to right, #3BAFDA, #68D6EC);
         }
+    </style>
+</head>
+<body class="bg-gray-100">
 
-        return $user;
-    }
+    <div class="min-h-screen flex items-center justify-center px-4">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-md p-8">
+            
+            <!-- Header -->
+            <div class="text-center mb-6">
+                <img src="/images/clinic-logo.png" alt="Clinic Logo" class="mx-auto w-20 h-20 mb-3" />
+                <h1 class="text-2xl font-semibold text-gray-700">
+                    Log in to your account
+                </h1>
+                <p class="text-gray-500 text-sm">
+                    Enter your email and password below to log in
+                </p>
+            </div>
 
-    /**
-     * Ensure the authentication request is not rate limited.
-     */
-    protected function ensureIsNotRateLimited(): void
-    {
-        if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
-            return;
+            <!-- Login Form -->
+            <form method="POST" action="/login" novalidate class="flex flex-col gap-6">
+                <!-- Email -->
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        autofocus
+                        autocomplete="email"
+                        placeholder="email@example.com"
+                        class="mt-1 w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
+                    />
+                    <!-- Validation error placeholder -->
+                    <p class="text-red-500 text-xs mt-1 hidden" id="email-error">Please enter a valid email.</p>
+                </div>
+
+                <!-- Password -->
+                <div class="relative">
+                    <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        required
+                        autocomplete="current-password"
+                        placeholder="Password"
+                        class="mt-1 w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
+                    />
+                    <!-- Password visibility toggle -->
+                    <button
+                        type="button"
+                        onclick="togglePasswordVisibility()"
+                        class="absolute top-8 right-3 text-sm text-gray-500 hover:text-gray-700 focus:outline-none"
+                        aria-label="Toggle password visibility"
+                    >
+                        Show
+                    </button>
+                    <!-- Validation error placeholder -->
+                    <p class="text-red-500 text-xs mt-1 hidden" id="password-error">Please enter your password.</p>
+                </div>
+
+                <!-- Remember Me -->
+                <div class="flex items-center">
+                    <input
+                        type="checkbox"
+                        id="remember"
+                        name="remember"
+                        class="mr-2"
+                    />
+                    <label for="remember" class="text-sm text-gray-700">Remember me</label>
+                </div>
+
+                <!-- Submit Button -->
+                <button
+                    type="submit"
+                    class="w-full bg-clinic text-white py-2 rounded-lg shadow-md hover:opacity-90 transition"
+                >
+                    Log in
+                </button>
+
+                <!-- Forgot Password Link -->
+                <div class="text-center mt-4">
+                    <a href="/password/reset" class="text-sm text-blue-500 hover:underline">
+                        Forgot your password?
+                    </a>
+                </div>
+
+                <!-- Register Link -->
+                <div class="space-x-1 text-sm text-center rtl:space-x-reverse text-zinc-600 mt-4">
+                    <span>Don't have an account?</span>
+                    <a href="/register" class="text-blue-500 hover:underline">Sign up</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const btn = event.currentTarget;
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                btn.textContent = 'Hide';
+            } else {
+                passwordInput.type = 'password';
+                btn.textContent = 'Show';
+            }
         }
+    </script>
 
-        event(new Lockout(request()));
-
-        $seconds = RateLimiter::availableIn($this->throttleKey());
-
-        throw ValidationException::withMessages([
-            'email' => __('auth.throttle', [
-                'seconds' => $seconds,
-                'minutes' => ceil($seconds / 60),
-            ]),
-        ]);
-    }
-
-    /**
-     * Get the authentication rate limiting throttle key.
-     */
-    protected function throttleKey(): string
-    {
-        return Str::transliterate(Str::lower($this->email).'|'.request()->ip());
-    }
-}; ?>
-
-<div class="flex flex-col gap-6">
-    <x-auth-header :title="__('Log in to your account')" :description="__('Enter your email and password below to log in')" />
-
-    <!-- Session Status -->
-    <x-auth-session-status class="text-center" :status="session('status')" />
-
-    <form method="POST" wire:submit="login" class="flex flex-col gap-6">
-        <!-- Email Address -->
-        <flux:input
-            wire:model="email"
-            :label="__('Email address')"
-            type="email"
-            required
-            autofocus
-            autocomplete="email"
-            placeholder="email@example.com"
-        />
-
-        <!-- Password -->
-        <div class="relative">
-            <flux:input
-                wire:model="password"
-                :label="__('Password')"
-                type="password"
-                required
-                autocomplete="current-password"
-                :placeholder="__('Password')"
-                viewable
-            />
-
-            @if (Route::has('password.request'))
-                <flux:link class="absolute top-0 text-sm end-0" :href="route('password.request')" wire:navigate>
-                    {{ __('Forgot your password?') }}
-                </flux:link>
-            @endif
-        </div>
-
-        <!-- Remember Me -->
-        <flux:checkbox wire:model="remember" :label="__('Remember me')" />
-
-        <div class="flex items-center justify-end">
-            <flux:button variant="primary" type="submit" class="w-full" data-test="login-button">
-                {{ __('Log in') }}
-            </flux:button>
-        </div>
-    </form>
-
-    @if (Route::has('register'))
-        <div class="space-x-1 text-sm text-center rtl:space-x-reverse text-zinc-600 dark:text-zinc-400">
-            <span>{{ __('Don\'t have an account?') }}</span>
-            <flux:link :href="route('register')" wire:navigate>{{ __('Sign up') }}</flux:link>
-        </div>
-    @endif
-</div>
+</body>
+</html>
