@@ -18,13 +18,13 @@
             <img class="Sidebar-Logo" src="{{ asset('images/Clinic-Flow-logo.png') }}" />
             
             <div class="SidebarMenu">
-                <div class="SidebarMenuItem">Bookings</div>
-                <div class="SidebarMenuItem">Dashboard</div>
-                <div class="SidebarMenuItem">Doctors</div>
-                <div class="SidebarMenuItem">Schedule</div>
-                <div class="SidebarMenuItem">Manage Users</div>
-                <div class="SidebarMenuItem">Reminders</div>
-                <div class="SidebarMenuItem">Records</div>
+                <a href="{{ route('admin.bookings', ['page' => 'bookings']) }}" class="SidebarMenuItem">Bookings</a>
+                <a href="{{ route('admin.dashboard', ['page' => 'dashboard']) }}" class="SidebarMenuItem">Dashboard</a> <!-- Not needed if you are already on dashboard -->
+                <a href="{{ route('admin.doctors', ['page' => 'doctors']) }}" class="SidebarMenuItem">Doctors</a>
+                <a href="{{ route('admin.schedule', ['page' => 'schedule']) }}" class="SidebarMenuItem">Schedule</a>
+                <a href="{{ route('admin.users', ['page' => 'users']) }}" class="SidebarMenuItem">Manage Users</a>
+                <a href="{{ route('admin.reminders', ['page' => 'reminders']) }}" class="SidebarMenuItem">Reminders</a>
+                <a href="{{ route('admin.records', ['page' => 'records']) }}" class="SidebarMenuItem">Records</a>
             </div>
             
             <footer class="CopyrightNotice_Sidebar">Copyright © 2025 Clinic Flow</footer>
@@ -33,11 +33,19 @@
         <!-- Main Content Area -->
         <main class="MainContent">
             <header class="MainHeader">
-                <!-- Page Title is called via layout @extend('admin') -->
-                <div class="MainHeaderTitleGroup">
-                    <img class="PageLogoNav" src="@yield('PageLogoNav')" alt="Page Logo Nav">
-                    <h1 class="MainTitle">@yield('title', 'Admin')</h1>
-                </div>
+                @if(Route::currentRouteName() === 'admin.dashboard')
+                    <div class="MainHeader-TitleGroup">
+                        <img class="PageLogoNav" src="@yield('PageLogoNav')" alt="Page Logo Nav">
+                        <h1 class="MainTitle">@yield('title', 'Admin')</h1>
+                    </div>
+                @else
+                    <div class="MainHeader-TitleGroup">
+                        <a href="{{ route('admin.dashboard') }}" class="goBack-link">
+                            <img src="@yield('GoBackIcon', asset('icons/goBack-Button.svg'))" alt="Go Back" class="goBack-icon">
+                        </a>
+                        <h1 class="MainTitle">@yield('title', 'Admin')</h1>
+                    </div>
+                @endif
                 
                 <!-- User Avatar -->
                 <!-- TODO: Make this dynamic later -->
@@ -51,6 +59,12 @@
             </section>
         </main>
     </div>
+
+    @section('GoBackNav')
+    <a href="{{ route('admin.dashboard') }}" class="goBack-link">
+        <img src="{{ asset('icons/goBack-Button.svg') }}" alt="Go Back" class="goBack-icon">
+    </a>
+    @endsection
 
     <script src="{{ asset('js/admin/app.js') }}" defer></script>
     @stack('scripts')

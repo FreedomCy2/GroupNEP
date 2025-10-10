@@ -2,9 +2,9 @@
 
 @extends('layouts.admin')
 
-@section('title', 'Go Back to Dashboard')
-
 @section('PageLogoNav', asset('images/graph-icon.png'))
+
+@section('title', 'Overview')
 
 @section('content')
     <div class="Dashboard-Container">

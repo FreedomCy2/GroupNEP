@@ -90,12 +90,12 @@ w/ - With
 
 `min-height: 100vh;` content takes up full height of viewport
 
-`display: flex;` flexbox layout for arranging items in a row or column 
--> combined with `flex-direction: column;` for vertical stacking OR
+`display: flex;` flexbox layout for arranging items in a row or column  
+-> combined with `flex-direction: column;` for vertical stacking OR  
 -> `flex-direction: row;` for horizontal alignment
 
-`<div class="flex"></div>` - this "parent" contains "children"
-`<aside>...</aside>` - child flexbox; left side
+`<div class="flex"></div>` - this "parent" contains "children"  
+`<aside>...</aside>` - child flexbox; left side  
 `<main>...</main>` - child flexbox; right side
 
 `width: 16rem;` - fixed width for sidebar
@@ -104,3 +104,7 @@ w/ - With
 
 `<img class="Undefined_UserAvatar" src="{{ asset('images/unnamed_user_pfp.png') }}" alt="Unnamed User Avatar" />`
 -> you can use the `@yield()` function to call images different for each certain pagees. 
+
+`@hasSection('header')` - check if the header EXISTS if it's being "called"  
+-> `@yield('header')` - display content of section (part of `/layouts`) called 'header'
+-> `<section class="DashboardCard">` - this "container" for something called "dashboard card"
