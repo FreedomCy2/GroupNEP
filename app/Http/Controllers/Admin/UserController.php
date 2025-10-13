@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\ClinicUser;
     
 class UserController extends Controller
 {
@@ -13,7 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $clinic_users = User::all();
+        $clinic_users = ClinicUser::all();
         return view('admin.users.index', compact('clinic_users'));
     }
 
@@ -22,7 +22,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
     /**
@@ -30,7 +30,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone_number' => 'required|string|max:255',
+            'joined_date' => 'required|date',
+        ]);
+
+        ClinicUser::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'phone_number' => $request->input('phone_number'),
+            'joined_date' => $request->input('joined_date'),
+        ]);
+
+        return redirect()->route('admin.users.index')->with('success', 'User created successfully.');
     }
 
     /**
@@ -54,7 +68,18 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone_number' => 'required|string|max:255',
+            'joined_date' => 'required|date',
+        ]);
+
+        // Create a new user record
+        ClinicUser::create($validatedData);
+
+        // Redirect back to the users index page with a success message
+        return redirect()->route('admin.users.index')->with('success', 'User created successfully!');
     }
 
     /**
@@ -62,10 +87,13 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = \App\Models\User::find($id);
-        if ($user) {
-            $user->delete();
-        }
-        return response()->json(['success' => true]);
+        $user = ClinicUser::findOrFail($id); // Find the user by ID
+        $user->delete(); // Delete the user
+
+        // Return a JSON response
+        return response()->json([
+            'success' => true,
+            'message' => 'User deleted successfully!',
+        ]);
     }
 }
