@@ -23,7 +23,7 @@
                 <a href="{{ route('admin.dashboard') }}" class="SidebarMenuItem">Dashboard</a>
                 <div class="SidebarMenuItem">Doctors</div>
                 <div class="SidebarMenuItem">Schedule</div>
-                <a href="{{ route('admin.users') }}" class="SidebarMenuItem">Manage Users</a>
+                <a href="{{ route('admin.users.index') }}" class="SidebarMenuItem">Manage Users</a>
                 <div class="SidebarMenuItem">Reminders</div>
                 <div class="SidebarMenuItem">Records</div>
             </div>

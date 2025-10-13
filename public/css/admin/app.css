@@ -135,6 +135,106 @@
     object-fit: contain;
 }
 
+.btn.btn-primary {
+    background: #68D6EC;
+    border-radius: 6px;
+    color: #FFF;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 10px;
+}
+
+.form-control {
+  color: #555; /* slightly grey */
+  background-color: #f8f8f8; /* subtle grey bg */
+  border: 1px solid #ccc;
+}
+
+.form-control:focus {
+  color: #000; /* full black when user types */
+  background-color: #fff; /* normal white input when active */
+  border-color: #4a90e2; /* blue highlight */
+}
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1000;
+    align-items: center;
+}
+
+.modal.hidden {
+    display: none; /* Hide the modal when not active */
+}
+
+.modal-box {
+    width: 350px;
+    height: 345px;
+    background: #fff;
+    padding: 20px; /* General padding for the modal box */
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    max-width: 90%;
+}
+
+.modal-box .modal-icon {
+    margin-top: 10px; /* Padding between the top of the box and the image */
+    width: 116px;
+    height: 97px;
+}
+
+.modal-box p {
+    margin: 10px 0; /* Padding between the text and the image */
+    padding: 0 10px; /* Add padding inside the text block */
+    font-size: 16px;
+    color: #000000;
+    font-family: sans-serif;
+}
+
+.modal-actions {
+    margin-top: 10px; /* Padding between the text and the modal actions */
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.modal-actions .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.modal-actions .btn.btn-secondary {
+    background: #ccc;
+    color: #000;
+}
+
+.modal-actions .btn.btn-danger {
+    background: #dc3545;
+    color: #fff;
+}
+
+.hidden {
+    display: none;
+}
+
 /**
  *                                                                                                     
  *                                                                                                     
@@ -370,8 +470,8 @@
     width: 100%; /* Ensure the table takes up the full width of the container */
 }
 
-.table-header,
-.table-row {
+.Booking-table .table-header,
+.Booking-table .table-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -379,7 +479,7 @@
     gap: 10px; /* Space between columns */
 }
 
-.table-header {
+.Booking-table .table-header {
     background: #E0F7FA;
     font-weight: bold;
     font-size: 1.1rem;
@@ -387,7 +487,7 @@
     
 }
 
-.table-row {
+.Booking-table .table-row {
     background: #FFF;
     font-size: 1rem;
     color: #000;
@@ -478,79 +578,6 @@
     transition: background 0.2s ease-in-out;
 }
 
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    z-index: 1000;
-    align-items: center;
-}
-
-.modal.hidden {
-    display: none; /* Hide the modal when not active */
-}
-
-.modal-box {
-    width: 350px;
-    height: 345px;
-    background: #fff;
-    padding: 20px; /* General padding for the modal box */
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    width: 400px;
-    max-width: 90%;
-}
-
-.modal-box .modal-icon {
-    margin-top: 10px; /* Padding between the top of the box and the image */
-    width: 116px;
-    height: 97px;
-}
-
-.modal-box p {
-    margin: 10px 0; /* Padding between the text and the image */
-    padding: 0 10px; /* Add padding inside the text block */
-    font-size: 16px;
-    color: #000000;
-    font-family: sans-serif;
-}
-
-.modal-actions {
-    margin-top: 10px; /* Padding between the text and the modal actions */
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.modal-actions .btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.modal-actions .btn.btn-secondary {
-    background: #ccc;
-    color: #000;
-}
-
-.modal-actions .btn.btn-danger {
-    background: #dc3545;
-    color: #fff;
-}
-
-.hidden {
-    display: none;
-}
-
 .Booking-Form--Container {
     display: flex;
     flex-direction: column;
@@ -570,10 +597,64 @@
     gap: 10px;
 }
 
-.btn.btn-primary {
-    background: #68D6EC;
+
+/**
+ *                                                           __  __                                 
+ *     /'\_/`\                                              /\ \/\ \                                
+ *    /\      \     __      ___      __       __      __    \ \ \ \ \    ____     __   _ __   ____  
+ *    \ \ \__\ \  /'__`\  /' _ `\  /'__`\   /'_ `\  /'__`\   \ \ \ \ \  /',__\  /'__`\/\`'__\/',__\ 
+ *     \ \ \_/\ \/\ \L\.\_/\ \/\ \/\ \L\.\_/\ \L\ \/\  __/    \ \ \_\ \/\__, `\/\  __/\ \ \//\__, `\
+ *      \ \_\\ \_\ \__/.\_\ \_\ \_\ \__/.\_\ \____ \ \____\    \ \_____\/\____/\ \____\\ \_\\/\____/
+ *       \/_/ \/_/\/__/\/_/\/_/\/_/\/__/\/_/\/___L\ \/____/     \/_____/\/___/  \/____/ \/_/ \/___/ 
+ *                                            /\____/                                               
+ *                                            \_/__/                                                
+ */
+
+ .User-Container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px 24px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.User-table {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Ensure the table takes up the full width of the container */
+}
+
+
+.table-header,
+.table-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    gap: 10px; /* Space between columns */
+}
+
+.table-header {
+    background: #E0F7FA;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #00796B;
+    
+}
+
+.table-row {
+    background: #FFF;
+    font-size: 1rem;
+    color: #000;
+    
+}
+
+button.add_User {
+    background: #E0F7FA;
     border-radius: 6px;
-    color: #FFF;
+    color: #000;
     font-family: sans-serif;
     font-size: 16px;
     font-weight: 600;
@@ -581,17 +662,25 @@
     border: none;
     cursor: pointer;
     transition: background 0.2s;
-    margin-top: 10px;
+    margin-bottom: 16px;
+    margin-left: auto;
 }
 
-.form-control {
-  color: #555; /* slightly grey */
-  background-color: #f8f8f8; /* subtle grey bg */
-  border: 1px solid #ccc;
-}
-
-.form-control:focus {
-  color: #000; /* full black when user types */
-  background-color: #fff; /* normal white input when active */
-  border-color: #4a90e2; /* blue highlight */
+button.delete_User {
+    display: flex;
+    width: 90px;
+    height: 32px;
+    padding: 7px 3px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #DC3545;
+    color: #FFF; /* White text */
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
 }

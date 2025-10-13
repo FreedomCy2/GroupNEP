@@ -59,6 +59,5 @@ Route::get('admin/dashboard', [DashboardController::class, 'index'])->name('admi
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('bookings', BookingController::class);
+    Route::resource('users', UserController::class);
 });
-
-Route::get('admin/users', [UserController::class, 'index'])->name('admin.users');
