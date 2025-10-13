@@ -136,27 +136,31 @@
 }
 
 /**
- *     ________  ________  ________  ________          ___       ___  ___  ________  ___  __       
- *    |\   ____\|\   __  \|\   __  \|\   ___ \        |\  \     |\  \|\  \|\   ____\|\  \|\  \     
- *    \ \  \___|\ \  \|\  \ \  \|\  \ \  \_|\ \       \ \  \    \ \  \\\  \ \  \___|\ \  \/  /|_   
- *     \ \  \  __\ \  \\\  \ \  \\\  \ \  \ \\ \       \ \  \    \ \  \\\  \ \  \    \ \   ___  \  
- *      \ \  \|\  \ \  \\\  \ \  \\\  \ \  \_\\ \       \ \  \____\ \  \\\  \ \  \____\ \  \\ \  \ 
- *       \ \_______\ \_______\ \_______\ \_______\       \ \_______\ \_______\ \_______\ \__\\ \__\
- *        \|_______|\|_______|\|_______|\|_______|        \|_______|\|_______|\|_______|\|__| \|__|
- *                                                                                                 
- *                                                                                                 
- *                                                                                                 
+ *                                                                                                     
+ *                                                                                                     
+ *        ,---,                             ,---,                                                      
+ *      .'  .' `\                         ,--.' |      ,---,                                     ,---, 
+ *    ,---.'     \                        |  |  :    ,---.'|      ,---.               __  ,-.  ,---.'| 
+ *    |   |  .`\  |              .--.--.  :  :  :    |   | :     '   ,'\            ,' ,'/ /|  |   | : 
+ *    :   : |  '  |  ,--.--.    /  /    ' :  |  |,--.:   : :    /   /   |  ,--.--.  '  | |' |  |   | | 
+ *    |   ' '  ;  : /       \  |  :  /`./ |  :  '   |:     |,-..   ; ,. : /       \ |  |   ,',--.__| | 
+ *    '   | ;  .  |.--.  .-. | |  :  ;_   |  |   /' :|   : '  |'   | |: :.--.  .-. |'  :  / /   ,'   | 
+ *    |   | :  |  ' \__\/: . .  \  \    `.'  :  | | ||   |  / :'   | .; : \__\/: . .|  | ' .   '  /  | 
+ *    '   : | /  ;  ," .--.; |   `----.   \  |  ' | :'   : |: ||   :    | ," .--.; |;  : | '   ; |:  | 
+ *    |   | '` ,/  /  /  ,.  |  /  /`--'  /  :  :_:,'|   | '/ : \   \  / /  /  ,.  ||  , ; |   | '/  ' 
+ *    ;   :  .'   ;  :   .'   \'--'.     /|  | ,'    |   :    |  `----' ;  :   .'   \---'  |   :    :| 
+ *    |   ,.'     |  ,     .-./  `--'---' `--''      /    \  /          |  ,     .-./       \   \  /   
+ *    '---'        `--`---'                          `-'----'            `--`---'            `----'    
+ *                                                                                                     
  */
-
-/* Container CLASS */
 
 .Dashboard-Container {
     display: flex;
     flex-direction: row;
-    gap: 32px;
-    justify-content: flex-start;
+    gap: 72px;
+    justify-content: center;
     align-items: flex-start;
-    padding: 24px 0;
+    padding: 24px 24px;
     flex-wrap: wrap;
 }
 
@@ -329,98 +333,265 @@
     line-height: normal;
 }
 
-/* To ensure proper alignment of text between table "margins" */
+
+
+/**
+ *                                                                              
+ *                                                                              
+ *        ,---,.                           ,-.                                  
+ *      ,'  .'  \                      ,--/ /|   ,--,                           
+ *    ,---.' .' |   ,---.     ,---.  ,--. :/ | ,--.'|         ,---,             
+ *    |   |  |: |  '   ,'\   '   ,'\ :  : ' /  |  |,      ,-+-. /  |  ,----._,. 
+ *    :   :  :  / /   /   | /   /   ||  '  /   `--'_     ,--.'|'   | /   /  ' / 
+ *    :   |    ; .   ; ,. :.   ; ,. :'  |  :   ,' ,'|   |   |  ,"' ||   :     | 
+ *    |   :     \'   | |: :'   | |: :|  |   \  '  | |   |   | /  | ||   | .\  . 
+ *    |   |   . |'   | .; :'   | .; :'  : |. \ |  | :   |   | |  | |.   ; ';  | 
+ *    '   :  '; ||   :    ||   :    ||  | ' \ \'  : |__ |   | |  |/ '   .   . | 
+ *    |   |  | ;  \   \  /  \   \  / '  : |--' |  | '.'||   | |--'   `---`-'| | 
+ *    |   :   /    `----'    `----'  ;  |,'    ;  :    ;|   |/       .'__/\_: | 
+ *    |   | ,'                       '--'      |  ,   / '---'        |   :    : 
+ *    `----'                                    ---`-'                \   \  /  
+ *                                                                     `--`-'   
+ */
+
+.Booking-Container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px 24px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.Booking-table {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Ensure the table takes up the full width of the container */
+}
+
 .table-header,
 .table-row {
     display: flex;
-    gap: 32px;
-    padding: 12px 24px;
     align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    gap: 10px; /* Space between columns */
 }
 
-.table-header__cell,
-.table-row__cell, 
-.table-row__delete-cell {
-    min-width: 120px;
-    flex: 1;
-    text-align: left;
-}
-
-/* End of block */
-
-
-.Booking-Container .table-header {
-    width: 1150px;
-    height: 50px;
-    display: flex;
-    gap: 32px;
-    padding: 12px 24px;
+.table-header {
     background: #E0F7FA;
-    font-weight: 600;
+    font-weight: bold;
     font-size: 1.1rem;
     color: #00796B;
-    font-family: sans-serif;
-    border-radius: 8px 8px 0 0;
+    
 }
 
-.Booking-Container .table-row {
-    display: flex;
-    gap: 32px;
-    padding: 12px 24px;
+.table-row {
+    background: #FFF;
     font-size: 1rem;
+    color: #000;
+    
+}
+
+.table-header p,
+.table-row p {
+    flex: 1; /* Ensure all columns have equal width */
+    text-align: left; /* Align text to the left */
+}
+
+.table-header p:last-child,
+.table-row p:last-child {
+    text-align: center; /* Center-align the "Actions" column */
+}
+
+.Booking-Container .button.add_booking {
+    background: #E0F7FA;
+    border-radius: 6px;
+    color: #000;
     font-family: sans-serif;
-    color: #222;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-bottom: 16px;
+    margin-left: auto;
+}
+
+.Booking-Container .text-green {
+    color: #28a745; 
+    font-weight: bold; 
+}
+.Booking-Container .text-yellow { 
+    font-weight: bold; 
+    color: #ffc107; 
+}
+.Booking-Container .text-red { 
+    color: #dc3545; 
+    font-weight: bold; 
+}
+
+.row-actions {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    justify-content: center; /* Center the buttons in the Actions column */
     align-items: center;
 }
 
-.Booking-Container .table-header__cell {
-    min-width: 100px;
-    flex: 1;
-    text-align: left;
-}
-
-.Booking-Container .table-row__delete-cell {
+.button.delete_booking {
     display: flex;
-    width: 84px;
+    width: 60px;
     height: 32px;
     padding: 7px 3px;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
     border-radius: 6px;
     background: #DC3545;
-    color: black;
+    color: #FFF; /* White text */
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+}
+
+.button.edit_booking {
+    display: flex;
+    width: 50px;
+    height: 32px;
+    padding: 7px 3px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #FFC107;
+    color: #FFF; /* White text */
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1000;
+    align-items: center;
+}
+
+.modal.hidden {
+    display: none; /* Hide the modal when not active */
+}
+
+.modal-box {
+    width: 350px;
+    height: 345px;
+    background: #fff;
+    padding: 20px; /* General padding for the modal box */
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    max-width: 90%;
+}
+
+.modal-box .modal-icon {
+    margin-top: 10px; /* Padding between the top of the box and the image */
+    width: 116px;
+    height: 97px;
+}
+
+.modal-box p {
+    margin: 10px 0; /* Padding between the text and the image */
+    padding: 0 10px; /* Add padding inside the text block */
+    font-size: 16px;
+    color: #000000;
     font-family: sans-serif;
 }
 
-.Booking--confirmDelete .modal-overlay {
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
+.modal-actions {
+    margin-top: 10px; /* Padding between the text and the modal actions */
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
 }
 
-.Booking--confirmDelete .modal {
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    background: #D9D9D9B2; 
-    opacity: 0.7;
+.modal-actions .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
-.Booking-Container .modal-box {
-    position: relative; 
-    background: #fff; 
-    padding: 20px; 
-    border-radius: 8px; 
-    z-index: 10;
+.modal-actions .btn.btn-secondary {
+    background: #ccc;
+    color: #000;
 }
 
-.Booking-Container .hidden {
-    display:none;
+.modal-actions .btn.btn-danger {
+    background: #dc3545;
+    color: #fff;
+}
+
+.hidden {
+    display: none;
+}
+
+.Booking-Form--Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Booking-Form--Container .form-group,
+.Booking-Edit--Container .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    align-items: center;
+    font-family: sans-serif;
+    color: #000;
+    font-size: 24px;
+    font-weight: 600;
+    gap: 10px;
+}
+
+.btn.btn-primary {
+    background: #68D6EC;
+    border-radius: 6px;
+    color: #FFF;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 10px;
+}
+
+.form-control {
+  color: #555; /* slightly grey */
+  background-color: #f8f8f8; /* subtle grey bg */
+  border: 1px solid #ccc;
+}
+
+.form-control:focus {
+  color: #000; /* full black when user types */
+  background-color: #fff; /* normal white input when active */
+  border-color: #4a90e2; /* blue highlight */
 }

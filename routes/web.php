@@ -49,23 +49,16 @@ Route::middleware(['auth'])->group(function () {
 */                  
 
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\AdminPagesController;
+use App\Http\Controllers\Admin\BookingController;
+use App\Http\Controllers\Admin\UserController;
 
-// Admin view routes 
-Route::get('admin/home', [DashboardController::class, 'index'])->name('admin.home');
+// Each view gets their own routing and controller under one prefix named "admin"
 
-// Admin Dashboard
+// PS: Jgn buatkan controller yg buatkan semua at once, code confirm gaduh nanti
 Route::get('admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
-// Other views (Bookings, Doctors, Schedule, Manage Users, Reminders, Records) under one "main" controller for simplicity
 Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('bookings', [AdminPagesController::class, 'index'])->name('bookings');
-    Route::get('dashboard', [AdminPagesController::class, 'index'])->name('dashboard');
-    Route::get('doctors', [AdminPagesController::class, 'index'])->name('doctors');
-    Route::get('schedule', [AdminPagesController::class, 'index'])->name('schedule');
-    Route::get('users', [AdminPagesController::class, 'index'])->name('users');
-    Route::get('reminders', [AdminPagesController::class, 'index'])->name('reminders');
-    Route::get('records', [AdminPagesController::class, 'index'])->name('records');
-
-    Route::get('bookings/delete/{id}', [AdminPagesController::class, 'delete'])->name('bookings-delete');
+    Route::resource('bookings', BookingController::class);
 });
+
+Route::get('admin/users', [UserController::class, 'index'])->name('admin.users');

@@ -17,14 +17,15 @@
         <aside class="Sidebar">
             <img class="Sidebar-Logo" src="{{ asset('images/Clinic-Flow-logo.png') }}" />
             
+            <!-- PS: Plz only add routing here AFTER kau buat route arah web.php & frontend -->
             <div class="SidebarMenu">
-                <a href="{{ route('admin.bookings', ['page' => 'bookings']) }}" class="SidebarMenuItem">Bookings</a>
-                <a href="{{ route('admin.dashboard', ['page' => 'dashboard']) }}" class="SidebarMenuItem">Dashboard</a> <!-- Not needed if you are already on dashboard -->
-                <a href="{{ route('admin.doctors', ['page' => 'doctors']) }}" class="SidebarMenuItem">Doctors</a>
-                <a href="{{ route('admin.schedule', ['page' => 'schedule']) }}" class="SidebarMenuItem">Schedule</a>
-                <a href="{{ route('admin.users', ['page' => 'users']) }}" class="SidebarMenuItem">Manage Users</a>
-                <a href="{{ route('admin.reminders', ['page' => 'reminders']) }}" class="SidebarMenuItem">Reminders</a>
-                <a href="{{ route('admin.records', ['page' => 'records']) }}" class="SidebarMenuItem">Records</a>
+                <a href="{{ route('admin.bookings.index') }}" class="SidebarMenuItem">Bookings</a>
+                <a href="{{ route('admin.dashboard') }}" class="SidebarMenuItem">Dashboard</a>
+                <div class="SidebarMenuItem">Doctors</div>
+                <div class="SidebarMenuItem">Schedule</div>
+                <a href="{{ route('admin.users') }}" class="SidebarMenuItem">Manage Users</a>
+                <div class="SidebarMenuItem">Reminders</div>
+                <div class="SidebarMenuItem">Records</div>
             </div>
             
             <footer class="CopyrightNotice_Sidebar">Copyright © 2025 Clinic Flow</footer>
