@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->string('customer_name');
-            $table->string('customer_email');
-            $table->string('customer_phone_number');
-            $table->dateTime('customer_joined_date');
+            $table->string('patient');
+            $table->string('doctor');
+            $table->date('date');
+            $table->time('time');
+            $table->enum('status', ['confirmed', 'pending', 'cancelled']);
             $table->timestamps();
         });
     }
