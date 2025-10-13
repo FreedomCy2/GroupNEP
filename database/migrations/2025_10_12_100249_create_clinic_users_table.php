@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('clinic_users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('phone_number')->nullable();
-            $table->date('joined_date')->nullable();
+            $table->string('email');
+            $table->string('phone_number');
+            $table->date('joined_date');
             $table->timestamps();
         });
     }

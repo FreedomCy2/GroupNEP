@@ -4,7 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use App\Models\ClinicUser;
 
 class UserTableSeeder extends Seeder
 {
@@ -13,23 +14,22 @@ class UserTableSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('users')->truncate();
-
-        DB::table('users')->insert([
-            'name' => 'John Doe',
-            'email' => 'john.doe@example.com',
-            'phone_number' => '123-4567',
-            'joined_date' => now()->toDateString(),
+        $data = [
+            'name' => 'Dr Smith',
+            'email' => 'dr.smith@example.com',
+            'phone_number' => '456-7890',
+            'joined_date' => '2025-10-13', // Use ISO date format (YYYY-MM-DD)
             'created_at' => now(),
             'updated_at' => now(),
-        ]);
+        ];
 
-        $validator = Validator::make($data, [
+        // Validation rules for the users table
+        $rules = [
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:clinic_users,email',
-            'phone_number' => 'nullable|string|max:20',
-            'joined_date' => 'nullable|date',
-        ]);
+            'email' => 'required|email|max:255',
+            'phone_number' => 'required|string|max:255',
+            'joined_date' => 'required|date',
+        ];
 
         // Validate the data
         $validator = Validator::make($data, $rules);
@@ -40,8 +40,8 @@ class UserTableSeeder extends Seeder
             return;
         }
 
-        // Insert the validated data
-        DB::table('clinic_users')->insert($data);
+        // Insert the validated data into the clinic_users table
+        ClinicUser::create($data);
 
         $this->command->info('User seeded successfully!');
     }

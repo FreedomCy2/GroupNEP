@@ -14,7 +14,7 @@ class UserController extends Controller
     public function index()
     {
         $clinic_users = User::all();
-        return view('admin.user', compact('clinic_users'));
+        return view('admin.users.index', compact('clinic_users'));
     }
 
     /**
@@ -62,9 +62,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $booking = \App\Models\Booking::find($id);
-        if ($booking) {
-            $booking->delete();
+        $user = \App\Models\User::find($id);
+        if ($user) {
+            $user->delete();
         }
         return response()->json(['success' => true]);
     }
