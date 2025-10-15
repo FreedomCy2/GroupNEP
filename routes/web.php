@@ -51,6 +51,7 @@ Route::middleware(['auth'])->group(function () {
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ReminderController;
 
 // Each view gets their own routing and controller under one prefix named "admin"
 
@@ -60,4 +61,5 @@ Route::get('admin/dashboard', [DashboardController::class, 'index'])->name('admi
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('bookings', BookingController::class);
     Route::resource('users', UserController::class);
+    Route::resource('reminders', ReminderController::class);
 });
