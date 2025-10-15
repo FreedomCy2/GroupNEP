@@ -4,8 +4,15 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 use Livewire\Volt\Volt;
 
+// Public routes (Laravel)use App\Http\Controllers\Admin\DashboardController;
+
+Route::get('admin/home', [DashboardController::class, 'index'])->name('admin.home');
+
+// Laravel Breeze (with email verification) [DashboardController::class, 'index'])->name('admin.home');
+
 Route::get('/', function () {
-    return view('welcome');
+    return
+view('welcome');
 })->name('home');
 
 Route::view('dashboard', 'dashboard')
@@ -24,11 +31,33 @@ Route::middleware(['auth'])->group(function () {
             when(
                 Features::canManageTwoFactorAuthentication()
                     && Features::optionEnabled(Features::twoFactorAuthentication(), 'confirmPassword'),
-                ['password.confirm'],
-                [],
-            ),
-        )
-        ->name('two-factor.show');
+                'password.confirm'
+            )
+        )->name('two-factor.edit');
 });
+// Auth routes (Laravel Breeze)firmPassword'),
+             
 
-require __DIR__.'/auth.php';
+/* 
+ ____     ___ __    __ 
+|    \   /  _]  |__|  |
+|  _  | /  [_|  |  |  |
+|  |  ||    _]  |  |  |
+|  |  ||   [_|  `  '  |
+|  |  ||     |\      / 
+|__|__||_____| \_/\_/  
+*/                  
+
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\BookingController;
+use App\Http\Controllers\Admin\UserController;
+
+// Each view gets their own routing and controller under one prefix named "admin"
+
+// PS: Jgn buatkan controller yg buatkan semua at once, code confirm gaduh nanti
+Route::get('admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('bookings', BookingController::class);
+    Route::resource('users', UserController::class);
+});
