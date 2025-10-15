@@ -1,0 +1,686 @@
+/* Global styles [DO NOT TOUCH] */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.layout-flex {
+    display: flex;
+    min-height: 50vh;
+}
+
+/* Blade Template [MASTER] */
+.Sidebar {
+    width: 250px;
+    min-height: 60vh;
+    padding: 20px 0 10px 0;
+    background: rgba(104, 214, 236, 0.50);
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Sidebar-Logo {
+    width: 128px;
+    height: 128px;
+    object-fit: contain;
+    margin-bottom: 16px;
+}
+
+.SidebarMenu {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    width: 100%;
+    align-items: flex-start;
+    margin-bottom: auto;
+}
+
+.SidebarMenuItem {
+    color: #000;
+    text-align: left;
+    font-family: sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    cursor: pointer;
+    padding: 8px 40px;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+.SidebarMenuItem:hover {
+    background: rgba(0,0,0,0.05);
+}
+
+.CopyrightNotice_Sidebar {
+    color: #000;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    margin-top: 32px;
+    width: 100%;
+}
+
+.MainContent {
+    flex: 1;
+    padding: 40px 40px 40px 40px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.MainHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.MainHeader-TitleGroup {
+    display: flex;
+    align-items: center; /* ensures vertical centering */
+    gap: 22px;
+}
+
+.MainHeader-Container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.PageLogoNav {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+}
+
+.MainTitle {
+    color: #000;
+    text-align: left;
+    font-family: sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    margin-left: 0;
+    margin-top: 0; /* <-- set this to 0 */
+}
+
+.DashboardCard {
+    background-color: #D9D9D9CC;
+    border-radius: 18px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    padding: 32px 24px;
+}
+
+.DashboardCardTitle {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.UserAvatar {
+    width: 66px;
+    height: 66px;
+    aspect-ratio: 1/1;
+    cursor: pointer;
+    display: flex;
+    object-fit: cover;
+}
+
+.GoBack-icon {
+    width: 23.326px;
+    height: 21.323px;
+    object-fit: contain;
+}
+
+.btn.btn-primary {
+    background: #68D6EC;
+    border-radius: 6px;
+    color: #FFF;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 10px;
+}
+
+.form-control {
+  color: #555; /* slightly grey */
+  background-color: #f8f8f8; /* subtle grey bg */
+  border: 1px solid #ccc;
+}
+
+.form-control:focus {
+  color: #000; /* full black when user types */
+  background-color: #fff; /* normal white input when active */
+  border-color: #4a90e2; /* blue highlight */
+}
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1000;
+    align-items: center;
+}
+
+.modal.hidden {
+    display: none; /* Hide the modal when not active */
+}
+
+.modal-box {
+    width: 350px;
+    height: 345px;
+    background: #fff;
+    padding: 20px; /* General padding for the modal box */
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    max-width: 90%;
+}
+
+.modal-box .modal-icon {
+    margin-top: 10px; /* Padding between the top of the box and the image */
+    width: 116px;
+    height: 97px;
+}
+
+.modal-box p {
+    margin: 10px 0; /* Padding between the text and the image */
+    padding: 0 10px; /* Add padding inside the text block */
+    font-size: 16px;
+    color: #000000;
+    font-family: sans-serif;
+}
+
+.modal-actions {
+    margin-top: 10px; /* Padding between the text and the modal actions */
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.modal-actions .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.modal-actions .btn.btn-secondary {
+    background: #ccc;
+    color: #000;
+}
+
+.modal-actions .btn.btn-danger {
+    background: #dc3545;
+    color: #fff;
+}
+
+.hidden {
+    display: none;
+}
+
+/**
+ *                                                                                                     
+ *                                                                                                     
+ *        ,---,                             ,---,                                                      
+ *      .'  .' `\                         ,--.' |      ,---,                                     ,---, 
+ *    ,---.'     \                        |  |  :    ,---.'|      ,---.               __  ,-.  ,---.'| 
+ *    |   |  .`\  |              .--.--.  :  :  :    |   | :     '   ,'\            ,' ,'/ /|  |   | : 
+ *    :   : |  '  |  ,--.--.    /  /    ' :  |  |,--.:   : :    /   /   |  ,--.--.  '  | |' |  |   | | 
+ *    |   ' '  ;  : /       \  |  :  /`./ |  :  '   |:     |,-..   ; ,. : /       \ |  |   ,',--.__| | 
+ *    '   | ;  .  |.--.  .-. | |  :  ;_   |  |   /' :|   : '  |'   | |: :.--.  .-. |'  :  / /   ,'   | 
+ *    |   | :  |  ' \__\/: . .  \  \    `.'  :  | | ||   |  / :'   | .; : \__\/: . .|  | ' .   '  /  | 
+ *    '   : | /  ;  ," .--.; |   `----.   \  |  ' | :'   : |: ||   :    | ," .--.; |;  : | '   ; |:  | 
+ *    |   | '` ,/  /  /  ,.  |  /  /`--'  /  :  :_:,'|   | '/ : \   \  / /  /  ,.  ||  , ; |   | '/  ' 
+ *    ;   :  .'   ;  :   .'   \'--'.     /|  | ,'    |   :    |  `----' ;  :   .'   \---'  |   :    :| 
+ *    |   ,.'     |  ,     .-./  `--'---' `--''      /    \  /          |  ,     .-./       \   \  /   
+ *    '---'        `--`---'                          `-'----'            `--`---'            `----'    
+ *                                                                                                     
+ */
+
+.Dashboard-Container {
+    display: flex;
+    flex-direction: row;
+    gap: 72px;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 24px 24px;
+    flex-wrap: wrap;
+}
+
+.Booking_Card, .Appointment_Card, .Patient_Card, .Doctor_Card {
+    display: flex;
+    width: 213px;
+    height: 555px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background: #FFF;
+}
+
+/* Dashboard-Container CLASS */
+
+.Booking_Card .card-icon {
+    width: 77px;
+    height: 81px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Booking_Card .stat-value {
+    color: #000;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 85px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.Booking_Card .stat-title {
+    color: #000;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.Booking_Card .stat-trend {
+    color: #000;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.Appointment_Card .card-icon {
+    width: 77px;
+    height: 81px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Appointment_Card .stat-value {
+    color: #000;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 85px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.Appointment_Card .stat-title {
+    color: #000;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.Appointment_Card .stat-trend {
+    color: #000;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.Patient_Card .card-icon {
+    width: 77px;
+    height: 81px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Patient_Card .stat-value {
+    color: #000;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 85px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.Patient_Card .stat-title {
+    color: #000;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.Patient_Card .stat-trend {
+    color: #000;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.Doctor_Card .card-icon {
+    width: 77px;
+    height: 81px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Doctor_Card .stat-value {
+    color: #000;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 85px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.Doctor_Card .stat-title {
+    color: #000;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.Doctor_Card .stat-trend {
+    color: #000;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+
+
+/**
+ *                                                                              
+ *                                                                              
+ *        ,---,.                           ,-.                                  
+ *      ,'  .'  \                      ,--/ /|   ,--,                           
+ *    ,---.' .' |   ,---.     ,---.  ,--. :/ | ,--.'|         ,---,             
+ *    |   |  |: |  '   ,'\   '   ,'\ :  : ' /  |  |,      ,-+-. /  |  ,----._,. 
+ *    :   :  :  / /   /   | /   /   ||  '  /   `--'_     ,--.'|'   | /   /  ' / 
+ *    :   |    ; .   ; ,. :.   ; ,. :'  |  :   ,' ,'|   |   |  ,"' ||   :     | 
+ *    |   :     \'   | |: :'   | |: :|  |   \  '  | |   |   | /  | ||   | .\  . 
+ *    |   |   . |'   | .; :'   | .; :'  : |. \ |  | :   |   | |  | |.   ; ';  | 
+ *    '   :  '; ||   :    ||   :    ||  | ' \ \'  : |__ |   | |  |/ '   .   . | 
+ *    |   |  | ;  \   \  /  \   \  / '  : |--' |  | '.'||   | |--'   `---`-'| | 
+ *    |   :   /    `----'    `----'  ;  |,'    ;  :    ;|   |/       .'__/\_: | 
+ *    |   | ,'                       '--'      |  ,   / '---'        |   :    : 
+ *    `----'                                    ---`-'                \   \  /  
+ *                                                                     `--`-'   
+ */
+
+.Booking-Container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px 24px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.Booking-table {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Ensure the table takes up the full width of the container */
+}
+
+.Booking-table .table-header,
+.Booking-table .table-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    gap: 10px; /* Space between columns */
+}
+
+.Booking-table .table-header {
+    background: #E0F7FA;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #00796B;
+    
+}
+
+.Booking-table .table-row {
+    background: #FFF;
+    font-size: 1rem;
+    color: #000;
+    
+}
+
+.table-header p,
+.table-row p {
+    flex: 1; /* Ensure all columns have equal width */
+    text-align: left; /* Align text to the left */
+}
+
+.table-header p:last-child,
+.table-row p:last-child {
+    text-align: center; /* Center-align the "Actions" column */
+}
+
+.Booking-Container .button.add_booking {
+    background: #E0F7FA;
+    border-radius: 6px;
+    color: #000;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-bottom: 16px;
+    margin-left: auto;
+}
+
+.Booking-Container .text-green {
+    color: #28a745; 
+    font-weight: bold; 
+}
+.Booking-Container .text-yellow { 
+    font-weight: bold; 
+    color: #ffc107; 
+}
+.Booking-Container .text-red { 
+    color: #dc3545; 
+    font-weight: bold; 
+}
+
+.row-actions {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    justify-content: center; /* Center the buttons in the Actions column */
+    align-items: center;
+}
+
+.button.delete_booking {
+    display: flex;
+    width: 60px;
+    height: 32px;
+    padding: 7px 3px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #DC3545;
+    color: #FFF; /* White text */
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+}
+
+.button.edit_booking {
+    display: flex;
+    width: 50px;
+    height: 32px;
+    padding: 7px 3px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #FFC107;
+    color: #FFF; /* White text */
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+}
+
+.Booking-Form--Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Booking-Form--Container .form-group,
+.Booking-Edit--Container .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    align-items: center;
+    font-family: sans-serif;
+    color: #000;
+    font-size: 24px;
+    font-weight: 600;
+    gap: 10px;
+}
+
+
+/**
+ *                                                           __  __                                 
+ *     /'\_/`\                                              /\ \/\ \                                
+ *    /\      \     __      ___      __       __      __    \ \ \ \ \    ____     __   _ __   ____  
+ *    \ \ \__\ \  /'__`\  /' _ `\  /'__`\   /'_ `\  /'__`\   \ \ \ \ \  /',__\  /'__`\/\`'__\/',__\ 
+ *     \ \ \_/\ \/\ \L\.\_/\ \/\ \/\ \L\.\_/\ \L\ \/\  __/    \ \ \_\ \/\__, `\/\  __/\ \ \//\__, `\
+ *      \ \_\\ \_\ \__/.\_\ \_\ \_\ \__/.\_\ \____ \ \____\    \ \_____\/\____/\ \____\\ \_\\/\____/
+ *       \/_/ \/_/\/__/\/_/\/_/\/_/\/__/\/_/\/___L\ \/____/     \/_____/\/___/  \/____/ \/_/ \/___/ 
+ *                                            /\____/                                               
+ *                                            \_/__/                                                
+ */
+
+ .User-Container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px 24px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.User-table {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Ensure the table takes up the full width of the container */
+}
+
+
+.table-header,
+.table-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    gap: 10px; /* Space between columns */
+}
+
+.table-header {
+    background: #E0F7FA;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #00796B;
+    
+}
+
+.table-row {
+    background: #FFF;
+    font-size: 1rem;
+    color: #000;
+    
+}
+
+button.add_User {
+    background: #E0F7FA;
+    border-radius: 6px;
+    color: #000;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-bottom: 16px;
+    margin-left: auto;
+}
+
+button.delete_User {
+    display: flex;
+    width: 90px;
+    height: 32px;
+    padding: 7px 3px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #DC3545;
+    color: #FFF; /* White text */
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+}
