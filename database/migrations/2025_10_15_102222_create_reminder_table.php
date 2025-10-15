@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reminder', function (Blueprint $table) {
+        Schema::create('reminders', function (Blueprint $table) { // Changed to 'reminders'
             $table->id();
             $table->string('patient_name');
             $table->string('symptoms');
-            $table->date('reminder_date');
-            $table->time('reminder_time');
-            $table->string('status');
+            $table->date('date');
+            $table->time('time');
+            $table->enum('status', ['pending', 'done'])->default('pending');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reminder');
+        Schema::dropIfExists('reminders'); // Changed to 'reminders'
     }
 };

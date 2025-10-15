@@ -2,15 +2,11 @@
 
 @section('PageLogoNav', asset('images/graph-icon.png'))
 
-@section('title')
-
-Return to Booking Page (Plz remove)
-
-@endsection
+@section('title', 'Create Reminder') <!-- Corrected title -->
 
 @section('content')
 
-    <div class="Booking-Form--Container">
+    <div class="Reminder-Form--Container">
         <!-- Display Validation Errors -->
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -22,17 +18,17 @@ Return to Booking Page (Plz remove)
             </div>
         @endif
 
-        <form action="{{ route('admin.bookings.store') }}" method="POST">
+        <form action="{{ route('admin.reminders.store') }}" method="POST">
         @csrf
 
         <div class="form-group">
             <div class="patient">Patient Name</div>
-            <input type="text" name="patient" id="patient" class="form-control" value="{{ old('patient') }}" required>
+            <input type="text" name="patient_name" id="patient_name" class="form-control" value="{{ old('patient_name') }}" required>
         </div>
 
         <div class="form-group">
-            <div class="doctor">Doctor Name</div>
-            <input type="text" name="doctor" id="doctor" class="form-control" value="{{ old('doctor') }}" required>
+            <div class="symptoms">Symptoms</div>
+            <input type="text" name="symptoms" id="symptoms" class="form-control" value="{{ old('symptoms') }}" required>
         </div>
 
         <div class="form-group">
@@ -48,13 +44,12 @@ Return to Booking Page (Plz remove)
         <div class="form-group">
             <div class="status">Status</div>
             <select name="status" id="status" class="form-control" required>
-                <option value="confirmed" {{ old('status') == 'confirmed' ? 'selected' : '' }}>Confirmed</option>
                 <option value="pending" {{ old('status') == 'pending' ? 'selected' : '' }}>Pending</option>
-                <option value="cancelled" {{ old('status') == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
+                <option value="done" {{ old('status') == 'done' ? 'selected' : '' }}>Done</option>
             </select>
         </div>
 
-        <button type="submit" class="btn btn-primary">Create Booking</button>
+        <button type="submit" class="btn btn-primary">Create Reminder</button>
         </form>
     </div>
 @endsection

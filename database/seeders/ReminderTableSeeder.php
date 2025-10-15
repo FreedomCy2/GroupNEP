@@ -15,35 +15,49 @@ class ReminderTableSeeder extends Seeder
     public function run(): void
     {
         $data = [
-            'patient_name' => 'Bear',
-            'symptoms' => 'Hallucination, Dizziness',
-            'reminder_date' => now()->toDateString(), // Dynamically set today's date
-            'reminder_time' => '12:00',
-            'status' => 'pending',
-            'created_at' => now(),
-            'updated_at' => now(),
+            [
+                'patient_name' => 'John Doe',
+                'symptoms' => 'Headache, Fever',
+                'date' => now()->toDateString(),
+                'time' => '14:00',
+                'status' => 'pending',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'patient_name' => 'Jane Smith',
+                'symptoms' => 'Cough, Sore Throat',
+                'date' => now()->toDateString(),
+                'time' => '16:00',
+                'status' => 'done',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ];
 
         // Validation rules
         $rules = [
             'patient_name' => 'required|string|max:255',
             'symptoms' => 'required|string|max:255',
-            'reminder_date' => 'required|date',
-            'reminder_time' => 'required|date_format:H:i',
+            'date' => 'required|date',
+            'time' => 'required|date_format:H:i', // Corrected validation rule
+            'status' => 'required|in:pending,done',
         ];
 
-        // Validate the data
-        $validator = Validator::make($data, $rules);
+        foreach ($data as $reminder) {
+            // Validate the data
+            $validator = Validator::make($reminder, $rules);
 
-        if ($validator->fails()) {
-            // Output validation errors
-            $this->command->error('Validation failed: ' . implode(', ', $validator->errors()->all()));
-            return;
+            if ($validator->fails()) {
+                // Output validation errors
+                $this->command->error('Validation failed: ' . implode(', ', $validator->errors()->all()));
+                return;
+            }
         }
 
         // Insert the validated data
-        DB::table('reminder')->insert($data);
+        DB::table('reminders')->insert($data);
 
-        $this->command->info('Reminder seeded successfully!');
+        $this->command->info('Reminders seeded successfully!');
     }
 }

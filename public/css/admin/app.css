@@ -494,17 +494,6 @@
     
 }
 
-.table-header p,
-.table-row p {
-    flex: 1; /* Ensure all columns have equal width */
-    text-align: left; /* Align text to the left */
-}
-
-.table-header p:last-child,
-.table-row p:last-child {
-    text-align: center; /* Center-align the "Actions" column */
-}
-
 .Booking-Container .button.add_booking {
     background: #E0F7FA;
     border-radius: 6px;
@@ -684,3 +673,149 @@ button.delete_User {
     cursor: pointer;
     transition: background 0.2s ease-in-out;
 }
+
+/* Reminders-Container CLASS */
+.Reminder-Container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px 24px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.Reminder-table {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Ensure the table takes up the full width of the container */
+}
+
+.Reminder-table .table-header,
+.Reminder-table .table-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    gap: 10px; /* Space between columns */
+}
+
+.Reminder-table .table-header {
+    background: #E0F7FA;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #00796B;
+}
+
+.Reminder-table .table-row {
+    background: #FFF;
+    font-size: 1rem;
+    color: #000;
+}
+
+.Reminder-Container .button.add_reminder {
+    background: #E0F7FA;
+    border-radius: 6px;
+    color: #000;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-bottom: 16px;
+    margin-left: auto;
+}
+
+.Reminder-Container .text-green {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.Reminder-Container .text-yellow {
+    font-weight: bold;
+    color: #ffc107;
+}
+
+.Reminder-Container .text-red {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.row-actions {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    justify-content: center; /* Center the buttons in the Actions column */
+    align-items: center;
+}
+
+.button.delete_reminder {
+    display: flex;
+    width: 60px;
+    height: 32px;
+    padding: 7px 3px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #DC3545;
+    color: #FFF; /* White text */
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+}
+
+.button.edit_reminder {
+    display: flex;
+    width: 50px;
+    height: 32px;
+    padding: 7px 3px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #FFC107;
+    color: #FFF; /* White text */
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+}
+
+/* Reminder-Form--Container CLASS */
+.Reminder-Form--Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Reminder-Form--Container .form-group,
+.Reminder-Edit--Container .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    align-items: center;
+    font-family: sans-serif;
+    color: #000;
+    font-size: 24px;
+    font-weight: 600;
+    gap: 10px;
+}
+
+/* Reminder-Edit--Container CLASS */
+.Reminder-Edit--Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
