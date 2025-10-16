@@ -52,14 +52,16 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ReminderController;
+use App\Http\Controllers\Admin\DoctorController;
 
-// Each view gets their own routing and controller under one prefix named "admin"
-
-// PS: Jgn buatkan controller yg buatkan semua at once, code confirm gaduh nanti
+/* Each view gets their own routing and controller under one prefix named "admin"
+ * PS: Jgn buatkan controller yg buatkan semua at once, code confirm gaduh nanti
+*/ 
 Route::get('admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('bookings', BookingController::class);
     Route::resource('users', UserController::class);
     Route::resource('reminders', ReminderController::class);
+    Route::resource('doctors', DoctorController::class);
 });
