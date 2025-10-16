@@ -7,37 +7,45 @@
 
 .layout-flex {
     display: flex;
-    min-height: 50vh;
+    min-height: 80vh;
 }
 
 /* Blade Template [MASTER] */
 .Sidebar {
     width: 250px;
-    min-height: 60vh;
-    padding: 20px 0 10px 0;
-    background: rgba(104, 214, 236, 0.50);
+    background: rgba(104, 214, 236, 0.5);
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
 }
 
 .Sidebar-Logo {
     width: 128px;
     height: 128px;
     object-fit: contain;
+    align-self: center;
     margin-bottom: 16px;
 }
 
 .SidebarMenu {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;   /* takes available vertical space */
     gap: 28px;
     width: 100%;
     align-items: flex-start;
     margin-bottom: auto;
 }
+
+.CopyrightNotice_Sidebar {
+    margin-top: auto; /* push to bottom */
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #000;
+}
+
 
 .SidebarMenuItem {
     color: #000;
@@ -54,22 +62,17 @@
     background: rgba(0,0,0,0.05);
 }
 
-.CopyrightNotice_Sidebar {
-    color: #000;
-    text-align: center;
-    font-family: sans-serif;
-    font-size: 10px;
-    font-weight: 400;
-    margin-top: 32px;
-    width: 100%;
-}
-
 .MainContent {
     flex: 1;
+    max-width: 1400px;    /* content won’t stretch beyond this */
+    min-width: 1024px;    /* optional: avoid squishing too much on small laptops */
+    min-height: 100%; /* fills parent layout-flex A.K.A terpaksa  this page to take full height regardless of if lil content */
     padding: 40px 40px 40px 40px;
     background: #fff;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    margin: 0 auto;       /* center the content area */
 }
 
 .MainHeader {
